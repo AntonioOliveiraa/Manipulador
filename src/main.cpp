@@ -33,7 +33,7 @@ void loop() {
   while (Serial.available() == 0) {}  // Wait for input
   angulo = Serial.parseInt();
 
-  // Verifica se os valores estão dentro dos limites esperados
+  // Checks if values ​​are within expected limits
   if (motor >= 1 && motor <= 4 && angulo >= 0 && angulo <= 180) {
     Serial.print("Movendo motor ");
     Serial.print(motor);
