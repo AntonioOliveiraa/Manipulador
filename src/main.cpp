@@ -9,31 +9,20 @@ Servo myservo4; // create servo object to control
 
 int pos = 0;    // variable to store the servo position
 
+int motor = 0; // variable to store the motor
+int angulo = -1; // variable to store the angle of the motor
+
 void setup() {
-  myservo1.write(175); // sets initial position
+  myservo1.write(170); // sets initial position
   myservo1.attach(9);  // attaches the servo on pin 9 to the servo object
   myservo2.write(90);  // sets initial position
   myservo2.attach(10); // attaches the servo on pin 10 to the servo object
-  myservo3.attach(11); // attaches the servo on pin 11 to the servo object
-  myservo4.attach(6); // attaches the servo on pin 6 to the servo object
+  // myservo3.attach(11); // attaches the servo on pin 11 to the servo object
+  // myservo4.attach(6); // attaches the servo on pin 6 to the servo object
   Serial.begin(9600);
 }
 
-void loop() {
-  int motor = 0;
-  int angulo = -1;
-
-  // Wait for engine number via serial
-  Serial.println("Digite o número do motor (1, 2, 3 ou 4):");
-  while (Serial.available() == 0) {} // Wait for input
-  motor = Serial.parseInt();
-
-  // Wait for angle via serial
-  Serial.println("Digite o ângulo (0 a 180):");
-  while (Serial.available() == 0) {}  // Wait for input
-  angulo = Serial.parseInt();
-
-  // Checks if values ​​are within expected limits
+void moveServo(int motor, int angulo) {
   if (motor >= 1 && motor <= 4 && angulo >= 0 && angulo <= 180) {
     Serial.print("Movendo motor ");
     Serial.print(motor);
@@ -93,5 +82,42 @@ void loop() {
         delay(15);                       // waits 15 ms for the servo to reach the position
       }
     } 
+  }
+}
+
+void resetServo(){
+  moveServo(1, 170); // sets the center position
+  moveServo(2, 45); // sets the center position
+  // myservo3.write(90); // sets the center position
+  // myservo4.write(90); // sets the center position
+}
+
+void extendServo(){
+  moveServo(2, 90);
+  delay(150);
+  moveServo(1, 95);
+  delay(150);
+  moveServo(2, 120);
+  delay(150);
+  moveServo(1, 80);
+  delay(150);
+  moveServo(2, 140);
+  delay(150);
+  moveServo(1, 120);
+  delay(150);
+  moveServo(2, 150);
+}
+void loop() {
+  // Menu de opções
+  Serial.println("Escolha uma opção:");
+  Serial.println("1. Extender braço");
+  Serial.println("2. Resetar todos os motores");
+  while (Serial.available() == 0) {}  // Wait for input
+  int option = Serial.parseInt();
+  
+  if (option == 1) {
+    extendServo();
+  } else if (option == 2) {
+    resetServo();
   }
 }
