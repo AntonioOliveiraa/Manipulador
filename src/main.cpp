@@ -13,12 +13,12 @@ int motor = 0; // variable to store the motor
 int angulo = -1; // variable to store the angle of the motor
 
 void setup() {
-  myservo1.write(170); // sets initial position
+  myservo1.write(155); // sets initial position
   myservo1.attach(9);  // attaches the servo on pin 9 to the servo object
-  myservo2.write(90);  // sets initial position
+  myservo2.write(15);  // sets initial position
   myservo2.attach(10); // attaches the servo on pin 10 to the servo object
-  // myservo3.attach(11); // attaches the servo on pin 11 to the servo object
-  // myservo4.attach(6); // attaches the servo on pin 6 to the servo object
+  myservo3.attach(11); // attaches the servo on pin 11 to the servo object - garra
+  myservo4.attach(6); // attaches the servo on pin 6 to the servo object - base
   Serial.begin(9600);
 }
 
@@ -88,8 +88,8 @@ void moveServo(int motor, int angulo) {
 void resetServo(){
   moveServo(1, 170); // sets the center position
   moveServo(2, 45); // sets the center position
-  // myservo3.write(90); // sets the center position
-  // myservo4.write(90); // sets the center position
+  moveServo(3, 170); // sets the center position
+  moveServo(4, 90); // sets the center position
 }
 
 void extendServo(){
@@ -107,11 +107,22 @@ void extendServo(){
   delay(150);
   moveServo(2, 150);
 }
+
+void abrirGarra() {
+  moveServo(3, 45);
+}
+
+void fecharGarra() {
+  moveServo(3, 170);
+}
+
 void loop() {
   // Menu de opções
   Serial.println("Escolha uma opção:");
   Serial.println("1. Extender braço");
   Serial.println("2. Resetar todos os motores");
+  Serial.println("3. Abrir garra");
+  Serial.println("4. Fechar garra");
   while (Serial.available() == 0) {}  // Wait for input
   int option = Serial.parseInt();
   
@@ -119,5 +130,9 @@ void loop() {
     extendServo();
   } else if (option == 2) {
     resetServo();
+  } else if (option == 3) {
+    abrirGarra();
+  } else if (option == 4) {
+    fecharGarra();
   }
 }
