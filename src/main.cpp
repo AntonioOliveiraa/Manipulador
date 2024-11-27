@@ -13,11 +13,13 @@ int motor = 0; // variable to store the motor
 int angulo = -1; // variable to store the angle of the motor
 
 void setup() {
-  myservo1.write(155); // sets initial position
+  myservo1.write(170); // sets initial position
   myservo1.attach(9);  // attaches the servo on pin 9 to the servo object
-  myservo2.write(15);  // sets initial position
+  myservo2.write(90);  // sets initial position
   myservo2.attach(10); // attaches the servo on pin 10 to the servo object
+  myservo3.write(170);
   myservo3.attach(11); // attaches the servo on pin 11 to the servo object - garra
+  myservo4.write(90);
   myservo4.attach(6); // attaches the servo on pin 6 to the servo object - base
   Serial.begin(9600);
 }
