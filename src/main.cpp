@@ -1,17 +1,17 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-Servo myservo1; // create servo object to control a servo
-Servo myservo2; // create servo object to control
-Servo myservo3; // create servo object to control
-Servo myservo4; // create servo object to control
+Servo myservo1; // cria o objeto servo para controlar um servo
+Servo myservo2; // cria o objeto servo para controlar um servo
+Servo myservo3; // cria o objeto servo para controlar um servo
+Servo myservo4; // cria o objeto servo para controlar um servo
 
-int pos = 0;    // variable to store the servo position
+int pos = 0;    // variável para armazenar a posição do servo
 
-int motor = 0;  // variable to store the motor
-int angle = -1; // variable to store the angle of the motor
+int motor = 0;  // variável para armazenar o motor
+int angle = -1; // variável para armazenar o ângulo do motor
 
-// Moves servos smoothly through the list of connected devices and writes them to the serial port
+// Move os servos suavemente através da lista de dispositivos conectados e os escreve na porta serial
 void moveServo(int motor, int angle) {
   if (motor >= 1 && motor <= 4 && angle >= 0 && angle <= 180) {
     Serial.print("Movendo motor ");
@@ -22,82 +22,82 @@ void moveServo(int motor, int angle) {
 
   if (motor == 1) {
     if (angle >= myservo1.read()){
-      for (pos = myservo1.read(); pos <= angle; pos += 1) { // goes from 0 degrees to 180 degrees
-        // in steps of 1 degree
-        myservo1.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo1.read(); pos <= angle; pos += 1) { 
+        // em passos de 1 grau
+        myservo1.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     } else {
-      for (pos = myservo1.read(); pos >= angle; pos -= 1) { // goes from 180 degrees to 0 degrees
-        myservo1.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo1.read(); pos >= angle; pos -= 1) { 
+        myservo1.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     }
   } else if (motor == 2) {
     if (angle >= myservo2.read()){
-      for (pos = myservo2.read(); pos <= angle; pos += 1) { // goes from 0 degrees to 180 degrees
-        // in steps of 1 degree
-        myservo2.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo2.read(); pos <= angle; pos += 1) { 
+        // em passos de 1 grau
+        myservo2.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     } else {
-      for (pos = myservo2.read(); pos >= angle; pos -= 1) { // goes from 180 degrees to 0 degrees
-        myservo2.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo2.read(); pos >= angle; pos -= 1) { 
+        myservo2.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     }
   } else if (motor == 3) {
     if (angle >= myservo3.read()){
-      for (pos = myservo3.read(); pos <= angle; pos += 1) { // goes from 0 degrees to 180 degrees
-        // in steps of 1 degree
-        myservo3.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo3.read(); pos <= angle; pos += 1) { 
+        // em passos de 1 grau
+        myservo3.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     } else {
-      for (pos = myservo3.read(); pos >= angle; pos -= 1) { // goes from 180 degrees to 0 degrees
-        myservo3.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo3.read(); pos >= angle; pos -= 1) { 
+        myservo3.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     } 
   } else if (motor == 4) {
     if (angle >= myservo4.read()){
-      for (pos = myservo4.read(); pos <= angle; pos += 1) { // goes from 0 degrees to 180 degrees
-        // in steps of 1 degree
-        myservo4.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo4.read(); pos <= angle; pos += 1) { 
+        // em passos de 1 grau
+        myservo4.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     } else {
-      for (pos = myservo4.read(); pos >= angle; pos -= 1) { // goes from 180 degrees to 0 degrees
-        myservo4.write(pos);             // tell servo to go to position in variable 'pos'
-        delay(15);                       // waits 15 ms for the servo to reach the position
+      for (pos = myservo4.read(); pos >= angle; pos -= 1) { 
+        myservo4.write(pos);             // diz ao servo para ir para a posição na variável 'pos'
+        delay(15);                       // espera 15 ms para o servo atingir a posição
       }
     } 
   }
 }
 
-// Resets all servos to their center positions
+// Reseta todos os servos para suas posições centrais
 void resetServo(){
-  moveServo(4, 100); // sets the center position
-  delay(100); // waits 100 ms
-  moveServo(2, 45); // sets the center position
-  delay(100); // waits 100 ms
-  moveServo(1, 170); // sets the center position
-  delay(100); // waits 100 ms
-  moveServo(3, 170); // sets the center position
+  moveServo(4, 100); // define a posição central
+  delay(100); // espera 100 ms
+  moveServo(2, 45); // define a posição central
+  delay(100); // espera 100 ms
+  moveServo(1, 170); // define a posição central
+  delay(100); // espera 100 ms
+  moveServo(3, 170); // define a posição central
 }
 
-// Moves the claw to the desired position
+// Move a garra para a posição desejada
 void moveClaw(bool move){
-  if (move) { // Open the claw to the desired position if the argument is == true
+  if (move) { // Abre a garra para a posição desejada se o argumento for == true
     moveServo(3, 135);
-  } else { // Close the claw to the desired position if the argument is == false
+  } else { // Fecha a garra para a posição desejada se o argumento for == false
     moveServo(3, 170);
   }
 }
 
-// Pick up the piece 1
+// Pega a peça 1
 void PickupPiece1(){
-  // Pick up the piece
+  // Pega a peça
   moveServo(4, 122);
   delay(100);
   moveClaw(true);
@@ -108,7 +108,7 @@ void PickupPiece1(){
   delay(100);
   moveClaw(false);
 
-  // Move the piece to the box
+  // Move a peça para a caixa
   moveServo(1, 160);
   delay(100);
   moveServo(4, 35);
@@ -117,9 +117,9 @@ void PickupPiece1(){
   delay(100);
 }
 
-// Pick up the piece 2
+// Pega a peça 2
 void PickupPiece2(){
-  // Picked up the piece
+  // Pegou a peça
   moveClaw(true);
   delay(100);
   moveServo(4, 100);
@@ -131,7 +131,7 @@ void PickupPiece2(){
   moveClaw(false);
   delay(100);
   
-  // Move the piece to the box
+  // Move a peça para a caixa
   moveServo(1, 160);
   delay(100);
   moveServo(2, 107);
@@ -143,9 +143,9 @@ void PickupPiece2(){
   
 }
 
-// Pick up the piece 3
+// Pega a peça 3
 void PickupPiece3(){
-  // Pick up the piece
+  // Pega a peça
   delay(100);
   moveClaw(true);
   delay(100);
@@ -164,7 +164,7 @@ void PickupPiece3(){
   moveClaw(false);
   delay(100);
 
-  // Move the piece to the box
+  // Move a peça para a caixa
   moveServo(1, 160);
   delay(100);
   moveServo(4, 35);
@@ -173,21 +173,21 @@ void PickupPiece3(){
   delay(100);
 }
 
-bool stopMove = false; // true if moving the piece should stop the move animation
+bool stopMove = false; // true se o movimento da peça deve parar a animação de movimento
 
 void setup() {
   resetServo();
-  myservo1.attach(9);  // attaches the servo on pin 9 (left) to the servo object
-  myservo2.attach(10); // attaches the servo on pin 10 (right) to the servo object
-  myservo3.attach(11); // attaches the servo on pin 11 (claw) to the servo object
-  myservo4.attach(6);  // attaches the servo on pin 6 (base) to the servo object
+  myservo1.attach(9);  // conecta o servo no pino 9 (esquerdo) ao objeto servo
+  myservo2.attach(10); // conecta o servo no pino 10 (direito) ao objeto servo
+  myservo3.attach(11); // conecta o servo no pino 11 (garra) ao objeto servo
+  myservo4.attach(6);  // conecta o servo no pino 6 (base) ao objeto servo
 
-  Serial.begin(9600); // serial port connected
+  Serial.begin(9600); // porta serial conectada
 }
 
 void loop() {
   while (!stopMove) {
-    // Repeat the movement of the pieces 3x
+    // Repete o movimento das peças 3 vezes
     for (int i = 0; i < 3; i++) {
       PickupPiece1();
       resetServo();
@@ -196,6 +196,6 @@ void loop() {
       PickupPiece3();
       resetServo();
     }
-    stopMove = true; // Stop movement after all pieces have been moved to the box repeatedly
+    stopMove = true; // Para o movimento depois que todas as peças forem movidas para a caixa repetidamente
   }
 }
