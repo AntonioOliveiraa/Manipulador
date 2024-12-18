@@ -80,12 +80,10 @@ O repositório possui as seguintes branches, cada uma com funcionalidades espec�
 - Plataforma de Desenvolvimento: [PlatformIO](https://platformio.org/)
 - Hardware: Arduino Uno, Micro Servo SG90 e fonte de alimentação externa.
 
-Aqui está o trecho atualizado do `README.md` com uma nova seção para especificação da **pinagem e ligação dos componentes**:
-
----
-
 ## Pinagem e Ligação dos Componentes
+
 ### Micro Servo SG90
+
 O projeto utiliza **quatro micro servos SG90** para controlar diferentes partes do braço manipulador. A pinagem e a conexão dos servos estão configuradas da seguinte maneira no código:
 
 ```cpp
@@ -95,25 +93,30 @@ myservo3.attach(11); // Conecta o servo no pino 11 (garra) ao objeto servo
 myservo4.attach(6);  // Conecta o servo no pino 6 (base) ao objeto servo
 ```
 
-| **Componente**           | **Pino no Arduino** | **Descrição**          |
-|--------------------------|---------------------|------------------------|
-| Micro Servo SG90 (esquerdo) | 9                   | Movimento do braço esquerdo |
-| Micro Servo SG90 (direito) | 10                  | Movimento do braço direito |
+| **Componente**           | **Pino no Arduino** | **Descrição**               |
+|--------------------------|---------------------|-----------------------------|
+| Micro Servo SG90 (esquerdo) | 9                   | Movimento do braço esquerdo  |
+| Micro Servo SG90 (direito) | 10                  | Movimento do braço direito  |
 | Micro Servo SG90 (garra)   | 11                  | Abertura/fechamento da garra |
-| Micro Servo SG90 (base)    | 6                   | Rotação da base         |
+| Micro Servo SG90 (base)    | 6                   | Rotação da base              |
 
 ### Fonte de Alimentação
 
 - **Fonte externa de 12V**: Utilizada para alimentar os **micro servos SG90**.
+- **Regulador de tensão**: Um regulador foi utilizado para **reduzir a tensão de 12V para 5V**, que é a tensão de operação dos micro servos SG90.
 - **GND comum**: O **GND** da fonte externa de 12V foi conectado ao **GND do Arduino** para garantir um circuito fechado e um referencial comum.
 
 ### Diagrama de Ligação (simplificado)
 
 ```
-Fonte 12V          Arduino              Micro Servos SG90
-    + ------------------------------------> VCC
-    GND ----------> GND ------------------> GND
-                    Pins -----------------> Sinal (Pinos 9, 10, 11, 6)
+Fonte 12V
+    |                
+    |--> Regulador de Tensão --> 5V --> VCC dos Micro Servos SG90
+    |                                  
+    |--> GND --------------------------> GND (comum Arduino e Servos)
+    
+Arduino
+    Pins 9, 10, 11, 6 -----------------> Sinal (Servos: esquerdo, direito, garra, base)
 ```
 
 ## Contribuidores
